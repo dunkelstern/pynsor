@@ -1,0 +1,17 @@
+[Unit]
+Description=Monitoring script for inserting sensor data into TimescaleDB
+After=network.target
+
+[Service]
+User=pynsor
+Group=pynsor
+Type=simple
+ExecStart=/usr/bin/pynsor --config /etc/pynsor/pynsor.conf
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=control-group
+Restart=on-failure
+SyslogIdentifier=pynsor
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

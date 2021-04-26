@@ -1,0 +1,9 @@
+post_remove() {
+  echo "Remember that the following files are not removed."
+  echo "  -> /etc/pynsor/pynsor.conf"
+}
+
+post_install() {
+    echo "To make this service work you will have to configure your"
+    echo "TimescaleDB database credentials in /etc/pynsor/pynsor.conf"
+}

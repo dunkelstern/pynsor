@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "pynsor"
+version = "1.0.0"
+description = "Script to insert monitoring data into a Timescale DB"
+authors = ["Johannes Schriewer <hallo@dunkelstern.de>"]
+license = "BSD-3-Clause"
+homepage = "http://github.com/dunkelstern/pynsor"
+repository = "http://github.com/dunkelstern/pynsor"
+keywords = ["Sensors", "Monitoring", "TimescaleDB"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+pynsor = 'pynsor.monitor:run'
+
+[tool.poetry.dependencies]
+python = "^3.9"
+psycopg2 = "^2.8.6"
+psutil = "^5.8"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.5.6"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

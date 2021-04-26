@@ -1,0 +1,54 @@
+# Maintainer: Johannes Schriewer <hallo@dunkelstern.de
+
+pkgname=pynsor
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Monitoring script for inserting sensor data into TimescaleDB'
+arch=('x86_64')
+url='http://github.com/dunkelstern/pynsor'
+license=('BSD-3-Clause')
+depends=("python" "python-psutil" "python-psycopg2" "python-tomlkit")
+optdepends=("ryzenpower" "iproute2")
+makedepends=("python-setuptools" "python-dephell")
+backup=('etc/pynsor/pynsor.conf')
+install="${pkgname}.install"
+source=("https://github.com/dunkelstern/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.install"
+        "${pkgname}.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.conf")
+md5sums=('156acc6ab0982da9a7793158c6c87318'
+         'f9f15523e8578c4519024fd5dacde527'
+         '8aa82717c89ed8dc2598d8812b462b18'
+         '2f002f48b142d93ef0e7a0d34dd6035f'
+         'c060a39ed0257b845d5e38253433ff85')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    dephell deps convert --from pyproject.toml --to setup.py
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    python setup.py build
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+    # configuration files
+    install -dD -m755 "${pkgdir}/etc/pynsor"
+    install -D -m644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+
+    install -dD -m755 "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    # service
+    install -D -m644 "${srcdir}/${pkgname}.service" \
+      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+
+    # systemd user and home directory
+    install -D -m644 "${srcdir}/${pkgname}.sysusers" \
+      "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+}

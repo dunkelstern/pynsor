@@ -1,0 +1,7 @@
+dist/
+.vscode/
+archlinux/pkg
+archlinux/src
+archlinux/*.tar.*
+*.pyc
+__pycache__
