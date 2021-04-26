@@ -10,7 +10,7 @@ keywords = ["Sensors", "Monitoring", "TimescaleDB"]
 readme = "README.md"
 
 [tool.poetry.scripts]
-pynsor = 'pynsor.monitor:run'
+pynsor = 'pynsor.monitor:init'
 
 [tool.poetry.dependencies]
 python = "^3.9"
