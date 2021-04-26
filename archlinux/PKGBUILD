@@ -12,12 +12,12 @@ optdepends=("ryzenpower" "iproute2")
 makedepends=("python-setuptools" "python-dephell")
 backup=('etc/pynsor/pynsor.conf')
 install="${pkgname}.install"
-source=("https://github.com/dunkelstern/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/dunkelstern/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.conf")
-md5sums=('156acc6ab0982da9a7793158c6c87318'
+md5sums=('6c9997e6cb7459169dd48d904f528bb3'
          'f9f15523e8578c4519024fd5dacde527'
          '8aa82717c89ed8dc2598d8812b462b18'
          '2f002f48b142d93ef0e7a0d34dd6035f'
