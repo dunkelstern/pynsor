@@ -17,6 +17,7 @@ Optional:
 - `ss` from `iproute2` for netstat (TCP Statistics)
 - `sensors` from `lm_sensors` for pretty sensor readouts (with named fields),
   falls back to `psutil` method if not available
+- `smartctl` from `smartmontools` for HDD and SSD SMART monitoring
 
 ## Changelog
 
