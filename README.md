@@ -8,6 +8,7 @@ but for the PostgreSQL based [TimescaleDB](https://www.timescale.com/)
 - Python >= 3.7
 - python `psutil` package
 - python `psycopg2` package
+- python `tomlkit` package
 
 Optional:
 
