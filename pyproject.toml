@@ -16,6 +16,7 @@ pynsor = 'pynsor.monitor:init'
 python = "^3.9"
 psycopg2 = "^2.8.6"
 psutil = "^5.8"
+tomlkit = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.6"
