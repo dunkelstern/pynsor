@@ -5,5 +5,15 @@ from .diskstats import DiskStats
 from .stat import ProcStat
 from .psutils import PSUtil
 from .netstat import Netstat
+from .smartctl import SMARTCtl
 
-__all__ = [Sensor, LMSensors, RyzenPower, DiskStats, ProcStat, PSUtil, Netstat]
+__all__ = [
+    Sensor,
+    LMSensors,
+    RyzenPower,
+    DiskStats,
+    ProcStat,
+    PSUtil,
+    Netstat,
+    SMARTCtl
+]

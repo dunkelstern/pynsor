@@ -70,6 +70,9 @@ ryzenpower_binary = "/usr/bin/ryzen_power"
 
 [sensor.ProcStat]
 enabled = true
+
+[sensor.SMARTCtl]
+enabled = True
 ```
 
 - `global.refresh` defines how often to fetch a sensor reading (seconds)
@@ -136,3 +139,15 @@ This plugin has a configuration:
 - Purpose: RAW CPU usage counters and some other kernel information from the
   kernel stats.
  
+### SMARTCtl
+
+- Source: `smartctl` (device needs to be accessible by script)
+- Tables: `sata_smart`, `nvme_smart`
+- Purpose: SMART status of disks
+
+This plugin has a configuration:
+
+- `smartctl_binary`: path to the `smartctl` binary to use (or a wrapper script
+  that allows the user to access the disk device)
+- `disks`: disks to scan, you can use glob patterns (see default), if not set
+  defaults to `[ "/dev/sd?", "/dev/sr?", "/dev/hd?", "/dev/nvme?n1" ]`
