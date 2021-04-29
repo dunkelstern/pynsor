@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pynsor"
-version = "1.0.0"
+version = "1.1.0"
 description = "Script to insert monitoring data into a Timescale DB"
 authors = ["Johannes Schriewer <hallo@dunkelstern.de>"]
 license = "BSD-3-Clause"

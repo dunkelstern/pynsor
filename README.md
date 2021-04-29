@@ -17,6 +17,15 @@ Optional:
 - `sensors` from `lm_sensors` for pretty sensor readouts (with named fields),
   falls back to `psutil` method if not available
 
+## Changelog
+
+### 1.1.0 Smartctl
+
+- Add SMART monitoring for HDDs, SSDs and NVME devices
+
+### 1.0.0 Initial release
+
+- Initial release
 
 ## Installation
 
