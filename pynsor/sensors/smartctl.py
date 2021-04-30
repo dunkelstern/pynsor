@@ -120,7 +120,7 @@ class SMARTCtl(Sensor):
                     'data': subprocess.check_output([self.binary_path, '--nocheck', 'standby', '-a', '-l', 'devstat', '-j', path])
                 })
         except subprocess.CalledProcessError as e:
-            self.is_enabled = False
+            pass
 
     def data(self) -> Optional[List[Dict[str, Any]]]:
         if self.raw_data is None:
