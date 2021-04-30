@@ -112,15 +112,15 @@ class SMARTCtl(Sensor):
         
 
     def gather(self, timestamp: datetime):
-        try:
-            for path in self.disks:
+        for path in self.disks:
+            try:
                 self.raw_data.append({
                     'time': timestamp,
                     'disk': os.path.basename(path),
                     'data': subprocess.check_output([self.binary_path, '--nocheck', 'standby', '-a', '-l', 'devstat', '-j', path])
                 })
-        except subprocess.CalledProcessError as e:
-            pass
+            except subprocess.CalledProcessError as e:
+                pass
 
     def data(self) -> Optional[List[Dict[str, Any]]]:
         if self.raw_data is None:
