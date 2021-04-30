@@ -83,7 +83,7 @@ ryzenpower_binary = "/usr/bin/ryzen_power"
 enabled = true
 
 [sensor.SMARTCtl]
-enabled = True
+enabled = true
 ```
 
 - `global.refresh` defines how often to fetch a sensor reading (seconds)
