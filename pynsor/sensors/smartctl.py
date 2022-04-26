@@ -114,13 +114,15 @@ class SMARTCtl(Sensor):
     def gather(self, timestamp: datetime):
         for path in self.disks:
             try:
-                self.raw_data.append({
-                    'time': timestamp,
-                    'disk': os.path.basename(path),
-                    'data': subprocess.check_output([self.binary_path, '--nocheck', 'standby', '-a', '-l', 'devstat', '-j', path])
-                })
+                output = subprocess.check_output([self.binary_path, '--nocheck', 'standby', '-a', '-l', 'devstat', '-j', path])
             except subprocess.CalledProcessError as e:
-                pass
+                output = e.output
+            self.raw_data.append({
+                'time': timestamp,
+                'disk': os.path.basename(path),
+                'data': output
+            })
+            
 
     def data(self) -> Optional[List[Dict[str, Any]]]:
         if self.raw_data is None:
@@ -174,7 +176,7 @@ class SMARTCtl(Sensor):
     def save(self, connection: Connection) -> None:
         data = self.data()
         if data is None:
-            print("ERROR: Could not read sensordata from ryzen power!")
+            print("ERROR: Could not read sensordata from smartctl!")
             return
 
         for item in data:
