@@ -1,7 +1,7 @@
 # Maintainer: Johannes Schriewer <hallo@dunkelstern.de
 
 pkgname=pynsor
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Monitoring script for inserting sensor data into TimescaleDB'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/dunkelstern/${pkgname}/archive/refs/tags/${pkgver}.t
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.conf")
-md5sums=('afe9178f6489d48d2a65199931c91d95'
+md5sums=('9b11b43040de077d2fe000b98ff8c79a'
          'f9f15523e8578c4519024fd5dacde527'
          '8aa82717c89ed8dc2598d8812b462b18'
          '2f002f48b142d93ef0e7a0d34dd6035f'
