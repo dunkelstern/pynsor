@@ -130,18 +130,23 @@ class SMARTCtl(Sensor):
 
         result = []
         for item in self.raw_data:
-            json_data = json.loads(item['data'])
-            data = {
-                'data': {
-                    'time': item['time'],
-                    'disk': item['disk'],
-                    'model_name': json_data['model_name'],
-                    'firmware_version': json_data['firmware_version'],
-                    'serial_number': json_data['serial_number'],
-                    'smart_status_passed': json_data['smart_status']['passed'],
-                    'logical_block_size': json_data['logical_block_size']
+            try:
+                json_data = json.loads(item['data'])
+                data = {
+                    'data': {
+                        'time': item['time'],
+                        'disk': item['disk'],
+                        'model_name': json_data['model_name'],
+                        'firmware_version': json_data['firmware_version'],
+                        'serial_number': json_data['serial_number'],
+                        'smart_status_passed': json_data['smart_status']['passed'],
+                        'logical_block_size': json_data['logical_block_size']
+                    }
                 }
-            }
+            except KeyError as e:
+                if json_data['smartctl']['messages'][0]['string'].startswith('Device is in STANDBY mode'):
+                    continue
+                raise e
 
             if json_data['device']['type'] == 'nvme':
                 data['type'] = 'nvme_smart'
