@@ -17,7 +17,7 @@ source=("https://github.com/dunkelstern/${pkgname}/archive/refs/tags/${pkgver}.t
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.conf")
-md5sums=('7a0a1a79fdd1750784b42816c9298dc0'
+md5sums=('d1920364eac891fb589959e1d3dde2bc'
          'f9f15523e8578c4519024fd5dacde527'
          '8aa82717c89ed8dc2598d8812b462b18'
          '2f002f48b142d93ef0e7a0d34dd6035f'
